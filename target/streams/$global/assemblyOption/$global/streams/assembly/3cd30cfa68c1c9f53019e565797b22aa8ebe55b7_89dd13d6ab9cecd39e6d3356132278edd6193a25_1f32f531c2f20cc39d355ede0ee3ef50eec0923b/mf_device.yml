@@ -1,0 +1,51 @@
+#########
+# UCSTB client
+#########
+
+#GMS
+GMS:
+  regex: 'VIP.+ Build'
+  device: 'stb'
+  model: 'GMS'
+
+#mediaroom10ft
+mediaroom10ft:
+  regex: '[Mm]ediaroom10ft'
+  device: 'stb'
+  model: 'mediaroom10ft'
+
+#OTT Avko
+OTT_Avko:
+  regex: 'avko Build'
+  device: 'stb'
+  model: 'OTT'
+
+#OTT HMB
+OTT_AHMB:
+    regex: 'HMB.+ Build'
+    device: 'stb'
+    model: 'OTT'
+
+#OTT bcm_platform
+OTT_bcm_platform:
+  regex: 'BCM.+SETTOP bcm_platform'
+  device: 'stb'
+  model: 'OTT'
+
+#mediaroom IPTV
+IPTV:
+  regex: 'Microsoft-IPTV-Client.*'
+  device: 'stb'
+  model: 'IPTV'
+
+#UCSTB
+UCSTB:
+  regex: 'UCSTB'
+  device: 'stb'
+  model: 'UC'
+
+#simulated test box
+simulatedTestBox:
+  regex: 'X11'
+  device: 'stb'
+  model: 'simulated test box'

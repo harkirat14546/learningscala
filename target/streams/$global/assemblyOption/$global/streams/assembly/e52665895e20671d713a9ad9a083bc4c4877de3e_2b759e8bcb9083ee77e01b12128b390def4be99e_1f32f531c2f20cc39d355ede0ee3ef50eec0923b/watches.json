@@ -1,0 +1,64 @@
+{
+  "template": ".watches*",
+  "order": 2147483647,
+  "settings": {
+    "index.number_of_shards": 1,
+    "index.mapper.dynamic" : false,
+    "index.format": 6,
+    "index.priority": 800
+  },
+  "mappings": {
+    "doc": {
+      "dynamic" : "strict",
+      "_all" : {
+        "enabled" : false
+      },
+      "properties": {
+        "status": {
+          "type": "object",
+          "enabled" : false,
+          "dynamic" : true
+        },
+        "trigger" : {
+          "type": "object",
+          "enabled" : false,
+          "dynamic" : true
+        },
+        "input": {
+          "type": "object",
+          "enabled" : false,
+          "dynamic" : true
+        },
+        "condition": {
+          "type": "object",
+          "enabled" : false,
+          "dynamic" : true
+        },
+        "throttle_period": {
+          "type" : "keyword",
+          "index" : false,
+          "doc_values" : false
+        },
+        "throttle_period_in_millis": {
+          "type" : "long",
+          "index" : false,
+          "doc_values" : false
+        },
+        "transform": {
+          "type" : "object",
+          "enabled" : false,
+          "dynamic" : true
+        },
+        "actions": {
+          "type" : "object",
+          "enabled" : false,
+          "dynamic" : true
+        },
+        "metadata" : {
+          "type" : "object",
+          "dynamic": true
+        }
+      }
+    }
+  }
+}

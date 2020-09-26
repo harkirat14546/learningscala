@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="sbt: com.ericsson.mediafirst:native-elasticsearch-provider_2.11:1.0.4:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/local/com.ericsson.mediafirst/native-elasticsearch-provider_2.11/1.0.4/jars/native-elasticsearch-provider_2.11.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.ivy2/local/com.ericsson.mediafirst/native-elasticsearch-provider_2.11/1.0.4/docs/native-elasticsearch-provider_2.11-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/local/com.ericsson.mediafirst/native-elasticsearch-provider_2.11/1.0.4/srcs/native-elasticsearch-provider_2.11-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

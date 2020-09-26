@@ -1,0 +1,394 @@
+{
+  "template": ".monitoring-logstash-${monitoring.template.version}-*",
+  "version": 5050099,
+  "settings": {
+    "index.number_of_shards": 1,
+    "index.number_of_replicas": 1,
+    "index.format": 6,
+    "index.codec": "best_compression"
+  },
+  "mappings": {
+    "doc": {
+      "dynamic": false,
+      "properties": {
+        "cluster_uuid": {
+          "type": "keyword"
+        },
+        "timestamp": {
+          "type": "date",
+          "format": "date_time"
+        },
+        "type": {
+          "type": "keyword"
+        },
+        "source_node": {
+          "properties": {
+            "uuid": {
+              "type": "keyword"
+            },
+            "host": {
+              "type": "keyword"
+            },
+            "transport_address": {
+              "type": "keyword"
+            },
+            "ip": {
+              "type": "keyword"
+            },
+            "name": {
+              "type": "keyword"
+            }
+          }
+        },
+        "logstash_stats": {
+          "properties": {
+            "logstash": {
+              "properties": {
+                "uuid": {
+                  "type": "keyword"
+                },
+                "name": {
+                  "type": "keyword"
+                },
+                "host": {
+                  "type": "keyword"
+                },
+                "http_address": {
+                  "type": "keyword"
+                },
+                "version": {
+                  "type": "keyword"
+                },
+                "snapshot": {
+                  "type": "boolean"
+                },
+                "status": {
+                  "type": "keyword"
+                },
+                "pipeline": {
+                  "properties": {
+                    "workers": {
+                      "type": "short"
+                    },
+                    "batch_size": {
+                      "type": "long"
+                    }
+                  }
+                }
+              }
+            },
+            "events": {
+              "properties": {
+                "filtered": {
+                  "type": "long"
+                },
+                "in": {
+                  "type": "long"
+                },
+                "out": {
+                  "type": "long"
+                },
+                "duration_in_millis": {
+                  "type": "long"
+                }
+              }
+            },
+            "timestamp": {
+              "type": "date"
+            },
+            "jvm": {
+              "properties": {
+                "uptime_in_millis": {
+                  "type": "long"
+                },
+                "gc": {
+                  "properties": {
+                    "collectors": {
+                      "properties": {
+                        "old": {
+                          "properties": {
+                            "collection_count": {
+                              "type": "long"
+                            },
+                            "collection_time_in_millis": {
+                              "type": "long"
+                            }
+                          }
+                        },
+                        "young": {
+                          "properties": {
+                            "collection_count": {
+                              "type": "long"
+                            },
+                            "collection_time_in_millis": {
+                              "type": "long"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "mem": {
+                  "properties": {
+                    "heap_max_in_bytes": {
+                      "type": "long"
+                    },
+                    "heap_used_in_bytes": {
+                      "type": "long"
+                    },
+                    "heap_used_percent": {
+                      "type": "long"
+                    }
+                  }
+                }
+              }
+            },
+            "os": {
+              "properties": {
+                "cpu": {
+                  "properties": {
+                    "load_average": {
+                      "properties": {
+                        "1m": {
+                          "type": "half_float"
+                        },
+                        "5m": {
+                          "type": "half_float"
+                        },
+                        "15m": {
+                          "type": "half_float"
+                        }
+                      }
+                    }
+                  }
+                },
+                "cgroup": {
+                  "properties": {
+                    "cpuacct": {
+                      "properties": {
+                        "control_group": {
+                          "type": "keyword"
+                        },
+                        "usage_nanos": {
+                          "type": "long"
+                        }
+                      }
+                    },
+                    "cpu": {
+                      "properties": {
+                        "control_group": {
+                          "type": "keyword"
+                        },
+                        "stat": {
+                          "properties": {
+                            "number_of_elapsed_periods": {
+                              "type": "long"
+                            },
+                            "number_of_times_throttled": {
+                              "type": "long"
+                            },
+                            "time_throttled_nanos": {
+                              "type": "long"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "process": {
+              "properties": {
+                "cpu": {
+                  "properties": {
+                    "percent": {
+                      "type": "long"
+                    }
+                  }
+                },
+                "max_file_descriptors": {
+                  "type": "long"
+                },
+                "open_file_descriptors": {
+                  "type": "long"
+                }
+              }
+            },
+            "reloads": {
+              "properties": {
+                "failures": {
+                  "type": "long"
+                },
+                "successes": {
+                  "type": "long"
+                }
+              }
+            },
+            "queue": {
+              "properties": {
+                "events_count": {
+                  "type": "long"
+                },
+                "type": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "pipelines": {
+              "type": "nested",
+              "properties": {
+                "name": {
+                  "type": "keyword"
+                },
+                "hash": {
+                  "type": "keyword"
+                },
+                "events": {
+                  "properties": {
+                    "input": {
+                      "type": "long"
+                    },
+                    "filter": {
+                      "type": "long"
+                    },
+                    "output": {
+                      "type": "long"
+                    }
+                  }
+                },
+                "queue": {
+                  "properties": {
+                    "events_count": {
+                      "type": "long"
+                    },
+                    "type": {
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "components": {
+                  "type": "nested",
+                  "properties": {
+                    "id": {
+                      "type": "keyword"
+                    },
+                    "long_stat": {
+                      "type": "nested",
+                      "properties": {
+                        "name": {
+                          "type": "keyword"
+                        },
+                        "value": {
+                          "type": "long"
+                        },
+                        "metric_type": {
+                          "type": "keyword"
+                        }
+                      }
+                    },
+                    "double_stat": {
+                      "type": "nested",
+                      "properties": {
+                        "name": {
+                          "type": "keyword"
+                        },
+                        "value": {
+                          "type": "double"
+                        },
+                        "metric_type": {
+                          "type": "keyword"
+                        }
+                      }
+                    },
+                    "string_stat": {
+                      "type": "nested",
+                      "properties": {
+                        "name": {
+                          "type": "keyword"
+                        },
+                        "value": {
+                          "type": "keyword"
+                        },
+                        "metric_type": {
+                          "type": "keyword"
+                        }
+                      }
+                    }
+                  }
+                },
+                "reloads": {
+                  "properties": {
+                    "failures": {
+                      "type": "long"
+                    },
+                    "successes": {
+                      "type": "long"
+                    }
+                  }
+                }
+              }
+            },
+            "workers": {
+              "type": "short"
+            },
+            "batch_size": {
+              "type": "integer"
+            }
+          }
+        },
+        "logstash_state": {
+          "properties": {
+            "uuid": {
+              "type": "keyword"
+            },
+            "name": {
+              "type": "keyword"
+            },
+            "host": {
+              "type": "keyword"
+            },
+            "http_address": {
+              "type": "keyword"
+            },
+            "version": {
+              "type": "keyword"
+            },
+            "snapshot": {
+              "type": "boolean"
+            },
+            "status": {
+              "type": "keyword"
+            },
+            "pipeline": {
+              "properties": {
+                "name": {
+                  "type": "keyword"
+                },
+                "hash": {
+                  "type": "keyword"
+                },
+                "workers": {
+                  "type": "short"
+                },
+                "batch_size": {
+                  "type": "integer"
+                },
+                "format": {
+                  "type": "keyword"
+                },
+                "version": {
+                  "type": "keyword"
+                },
+                "representation": {
+                  "enabled": false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

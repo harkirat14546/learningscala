@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
+	<info organisation="com.ericsson.mediafirst"
+		module="perfomancemetricsreport_2.11"
+		revision="0.51"
+		status="integration"
+		publication="20200623201819"
+	>
+		<description>
+		PerfomanceMetricsReport
+		</description>
+	</info>
+	<configurations>
+		<conf name="compile" visibility="public" description=""/>
+		<conf name="runtime" visibility="public" description="" extends="compile"/>
+		<conf name="test" visibility="public" description="" extends="runtime"/>
+		<conf name="provided" visibility="public" description=""/>
+		<conf name="optional" visibility="public" description=""/>
+		<conf name="compile-internal" visibility="private" description="" extends="compile,optional,provided"/>
+		<conf name="runtime-internal" visibility="private" description="" extends="runtime,optional"/>
+		<conf name="test-internal" visibility="private" description="" extends="test,optional,provided"/>
+		<conf name="plugin" visibility="private" description=""/>
+		<conf name="pom" visibility="public" description=""/>
+		<conf name="scala-tool" visibility="private" description=""/>
+	</configurations>
+	<publications>
+		<artifact name="perfomancemetricsreport_2.11" type="pom" ext="pom" conf="pom"/>
+		<artifact name="perfomancemetricsreport_2.11" type="jar" ext="jar" conf="compile"/>
+		<artifact name="perfomancemetricsreport_2.11" type="src" ext="jar" conf="compile" e:classifier="sources"/>
+		<artifact name="perfomancemetricsreport_2.11" type="doc" ext="jar" conf="compile" e:classifier="javadoc"/>
+	</publications>
+	<dependencies>
+		<dependency org="org.scala-lang" name="scala-compiler" rev="2.11.6" conf="scala-tool->default,optional(default)"/>
+		<dependency org="org.scala-lang" name="scala-library" rev="2.11.6" conf="scala-tool->default,optional(default);compile->default(compile)"/>
+		<dependency org="com.ericsson.mediafirst" name="spark-utils_2.11" rev="1.0.+" conf="compile->default(compile)"/>
+		<dependency org="com.ericsson.mediafirst" name="config_2.11" rev="1.1.+" conf="compile->default(compile)"/>
+		<dependency org="com.ericsson.mediafirst" name="spark-transformation-provider_2.11" rev="1.0.+" conf="compile->default(compile)"/>
+		<dependency org="com.ericsson.mediafirst" name="transport-provider_2.11" rev="1.0.+" conf="compile->default(compile)"/>
+		<dependency org="com.ericsson.mediafirst" name="spark-kafka-provider_2.11" rev="2.0.+" conf="compile->default(compile)"/>
+		<dependency org="com.ericsson.mediafirst" name="serialization_2.11" rev="1.1.+" conf="compile->default(compile)"/>
+		<dependency org="org.apache.spark" name="spark-sql-kafka-0-10_2.11" rev="2.3.0" conf="compile->default(compile)"/>
+		<dependency org="org.apache.spark" name="spark-sql_2.11" rev="2.3.0" conf="compile->default(compile)"/>
+		<dependency org="org.apache.logging.log4j" name="log4j-core" rev="2.11.0" conf="compile->default(compile)"/>
+		<dependency org="org.apache.logging.log4j" name="log4j-api" rev="2.11.0" conf="compile->default(compile)"/>
+	</dependencies>
+</ivy-module>

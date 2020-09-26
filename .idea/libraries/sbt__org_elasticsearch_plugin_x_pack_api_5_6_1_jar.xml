@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sbt: org.elasticsearch.plugin:x-pack-api:5.6.1:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.elasticsearch.plugin/x-pack-api/jars/x-pack-api-5.6.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

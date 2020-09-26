@@ -1,0 +1,15 @@
+#########
+# UCSTB client
+#########
+
+- regex: 'UCSTB'
+  name: 'UCSTB'
+  version: ''
+
+- regex: '[Mm]ediaroom10ft'
+  name: 'mediaroom10ft'
+  version: ''
+
+- regex: 'Microsoft-IPTV-Client.*'
+  name: 'STB'
+  version: ''

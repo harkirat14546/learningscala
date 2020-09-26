@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="sbt: com.ericsson.mediafirst:spark-kafka-provider_2.11:2.0.1:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/local/com.ericsson.mediafirst/spark-kafka-provider_2.11/2.0.1/jars/spark-kafka-provider_2.11.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.ivy2/local/com.ericsson.mediafirst/spark-kafka-provider_2.11/2.0.1/docs/spark-kafka-provider_2.11-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/local/com.ericsson.mediafirst/spark-kafka-provider_2.11/2.0.1/srcs/spark-kafka-provider_2.11-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
