@@ -1,4 +1,4 @@
-package com.mediakind.mediafirst.spark.performance.reports.sparksql
+package com.harkirat.spark.performance.reports.sparksql
 
 import org.apache.spark.sql.SparkSession
 

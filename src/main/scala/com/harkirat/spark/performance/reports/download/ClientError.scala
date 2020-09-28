@@ -1,4 +1,4 @@
-package com.mediakind.mediafirst.downloadablereports.reports
+package com.harkirat.spark.performance.reports.download
 
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.apache.spark.sql.functions.get_json_object

@@ -1,4 +1,4 @@
-package com.mediakind.mediafirst.spark.performance.reports.sparklearn
+package com.harkirat.spark.performance.reports.sparklearn
 
 import org.apache.spark.sql.{Dataset, SparkSession}
 
@@ -14,7 +14,12 @@ object Broadcast extends  App {
 
 
   val states=Map(("NY","NewYork"),("CA","Delhi"),("FL","Florida"))
+
+  val timevar=Map(("startTime","2020-09-10"),("CA","Delhi"),("FL","Florida"))
   val statesbroadcast=spark.sparkContext.broadcast(states)
+
+
+
   val data = Seq(("James","Smith","USA","CA"),
     ("Michael","Rose","USA","NE"),
     ("Robert","Williams","USA","CA"),

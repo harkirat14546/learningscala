@@ -1,4 +1,4 @@
-package com.mediakind.mediafirst.spark.performance.reports.scalalearning
+package com.harkirat.spark.performance.reports.scalalearning
 
 import scala.util.Random
 

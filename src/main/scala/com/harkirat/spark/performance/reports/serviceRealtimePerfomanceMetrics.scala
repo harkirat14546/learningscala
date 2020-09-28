@@ -1,4 +1,5 @@
-package com.mediakind.mediafirst.spark.performance.reports
+package com.harkirat.spark.performance.reports
+
 import com.ericsson.mediafirst.sparkutils.jobtemplates.StructuredStreamingJob
 import com.ericsson.mediafirst.utils.config.ConfigUtils
 import com.ericsson.mediafirst.sparkutils.jobtemplates.BatchJob

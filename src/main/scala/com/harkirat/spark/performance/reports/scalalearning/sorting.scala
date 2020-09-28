@@ -1,5 +1,6 @@
-package com.mediakind.mediafirst.spark.performance.reports.scalalearning
-import com.mediakind.mediafirst.spark.performance.reports.scalalearning.sortingAlgo.arr
+package com.harkirat.spark.performance.reports.scalalearning
+
+import sortingAlgo.arr
 
 import scala.collection.mutable.ListBuffer
 object sorting {

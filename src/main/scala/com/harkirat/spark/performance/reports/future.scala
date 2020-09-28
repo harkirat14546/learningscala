@@ -1,4 +1,5 @@
-package com.mediakind.mediafirst.spark.performance.reports
+package com.harkirat.spark.performance.reports
+
 import concurrent.ExecutionContext.Implicits.global
 import concurrent.Future
 import com.typesafe.config.{Config, ConfigFactory, ConfigValueFactory}

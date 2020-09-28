@@ -1,5 +1,4 @@
-package com.mediakind.mediafirst.spark.performance.reports.scalalearning
-
+package com.harkirat.spark.performance.reports.scalalearning
 
 object cream {
    implicit def creamfamous(s:String)=new donut2(s)

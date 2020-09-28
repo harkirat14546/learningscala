@@ -1,4 +1,5 @@
-package com.mediakind.mediafirst.spark.performance.reports
+package com.harkirat.spark.performance.reports
+
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.apache.spark.sql.functions.{col, get_json_object, split, when}
 import org.apache.spark.sql.UDFRegistration

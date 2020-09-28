@@ -1,4 +1,4 @@
-package com.mediakind.mediafirst.spark.performance.reports
+package com.harkirat.spark.performance.reports
 
 import org.apache.spark.{SparkConf, TaskContext}
 import org.apache.spark.streaming.StreamingContext

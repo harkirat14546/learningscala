@@ -1,4 +1,5 @@
-package com.mediakind.mediafirst.spark.performance.reports.KafkaConsumers
+package com.harkirat.spark.performance.reports.KafkaConsumers
+
 import java.util
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import  java.util.Properties
