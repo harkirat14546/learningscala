@@ -1,0 +1,97 @@
+
+#####Cassandra
+name := "native-cassandra-provider"
+version := "1.0.0"
+scalaVersion := "2.11.6"
+
+libraryDependencies ++= Seq (
+    "org.apache.spark"           %% "spark-core"                   % libraryVersions.value('sparkCore),
+    "org.apache.spark"           %% "spark-sql"                    % libraryVersions.value('sparkCore),
+    "com.typesafe"               %  "config"                       % libraryVersions.value('typesafe),
+    "com.datastax.spark"         %% "spark-cassandra-connector"    % libraryVersions.value('cassandraConnector),
+    "com.harkirat"    %%  "tools"                       % "1.0.+"
+)
+###Kafka
+
+name         := "spark-kafka-provider"
+version      := "2.0.1"
+scalaVersion := "2.11.6"
+
+libraryDependencies ++= Seq (
+  "org.apache.spark"        %% "spark-streaming"               % libraryVersions.value('sparkStreaming) %  "provided" exclude("org.apache.hadoop", "hadoop-yarn-api") exclude("org.apache.hadoop", "hadoop-mapreduce-client-core")  exclude("org.apache.hadoop", "hadoop-mapreduce-client-app")  exclude("org.apache.hadoop", "hadoop-mapreduce-client-jobclient") exclude("asm", "asm"),
+  "org.apache.spark"        %% "spark-streaming-kafka-0-10"    % libraryVersions.value('sparkStreamingKafka010),
+  "com.typesafe"            %  "config"                        % libraryVersions.value('typesafe),
+  "com.harkirat" %% "logging"                       % "1.0.+",
+  "com.harkirat" %% "config"                        % "1.1.+",
+  "com.harkirat" %% "tools"                         % "1.0.+",
+  "com.harkirat" %% "native-kafka-provider"         % "2.0.+",
+  "com.harkirat" %% "native-cassandra-provider"     % "1.0.+",
+  "com.harkirat" %% "serialization"                 % "1.1.+",
+  "com.harkirat" %% "spark-transformation-provider" % "1.0.+"
+)
+
+
+####elastci
+name := "spark-elasticsearch-provider"
+
+version := "2.0.1"
+scalaVersion := "2.11.6"
+
+libraryDependencies ++= Seq (
+    "com.harkirat" %% "native-elasticsearch-provider"       % "1.0.+",
+    "org.apache.spark"        %% "spark-core"                 % libraryVersions.value('sparkCore),
+    "com.harkirat" %% "annotations"                % "1.0.+",
+    "com.harkirat" %% "logging"                    % "1.0.+",
+    "org.elasticsearch"       %% "elasticsearch-spark-20"     % libraryVersions.value('elasticsearchSpark),
+    "org.elasticsearch"        %  "elasticsearch"             % libraryVersions.value('elasticsearch)
+)
+
+assemblyShadeRules in assembly ++= Seq(
+    ShadeRule.rename("io.netty.**" -> "shade.@1").inAll,
+    ShadeRule.rename("com.google.**" -> "shadeio.@1").inAll
+    //    ShadeRule.rename("javax.inject.**" -> "shade2.@1").inAll
+)
+
+
+1)hyperkit,docker (any one)
+2)minikube
+3)kubectl
+
+
+
+
+minikube start --kubernetes-version v1.15.0 --cpus=4 --memory=2g
+
+
+
+minikube dashboard
+
+
+
+ebhudev@Devendras-MacBook-Pro:~/Desktop/2.4.7/spark-2.4.7-bin-hadoop2.7/bin$ docker-image-tool.sh -m -t sparkdeva build
+-bash: docker-image-tool.sh: command not found
+ebhudev@Devendras-MacBook-Pro:~/Desktop/2.4.7/spark-2.4.7-bin-hadoop2.7/bin$ ./docker-image-tool.sh -m -t sparkdeva build
+Cannot find docker image. This script must be run from a runnable distribution of Apache Spark.
+ebhudev@Devendras-MacBook-Pro:~/Desktop/2.4.7/spark-2.4.7-bin-hadoop2.7/bin$ cd ..
+ebhudev@Devendras-MacBook-Pro:~/Desktop/2.4.7/spark-2.4.7-bin-hadoop2.7$ ./bin/docker-image-tool.sh -m -t sparkdeva build
+
+
+
+
+make available ur docker image in minikube env
+
+
+
+docker save spark:sparkdeva | (eval $(minikube docker-env) && docker load)
+
+
+
+
+
+  100  kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
+  101  history
+
+
+
+  working one
+  ./bin//spark-submit --master k8s://https://127.0.0.1:32768 --deploy-mode cluster --name spark-pi --class org.apache.spark.examples.SparkPi --conf spark.executor.instances=3 --driver-memory 1024m --executor-memory 2048m --conf spark.kubernetes.container.image=spark:sparklatest --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark /opt/spark/examples/jars/spark-examples_2.11-2.4.7.jar

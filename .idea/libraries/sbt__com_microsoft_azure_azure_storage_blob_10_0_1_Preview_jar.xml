@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: com.microsoft.azure:azure-storage-blob:10.0.1-Preview:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.microsoft.azure/azure-storage-blob/jars/azure-storage-blob-10.0.1-Preview.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.microsoft.azure/azure-storage-blob/srcs/azure-storage-blob-10.0.1-Preview-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -4,7 +4,7 @@
 		module="perfomancemetricsreport_2.11"
 		revision="0.6"
 		status="integration"
-		publication="20200806154629"
+		publication="20200929235932"
 	>
 		<description>
 		PerfomanceMetricsReport
@@ -43,5 +43,7 @@
 		<dependency org="org.apache.logging.log4j" name="log4j-api" rev="2.11.0" conf="compile->default(compile)"/>
 		<dependency org="org.scalatest" name="scalatest_2.11" rev="3.0.5" conf="test->default(compile)"/>
 		<dependency org="org.apache.hadoop" name="hadoop-aws" rev="2.7.3" conf="compile->default(compile)"/>
+		<dependency org="com.microsoft.azure" name="azure-storage-blob" rev="10.0.1-Preview" conf="compile->default(compile)"/>
+		<dependency org="com.microsoft.azure" name="azure-storage" rev="1.2.0" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>

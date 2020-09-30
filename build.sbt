@@ -17,7 +17,9 @@ libraryDependencies ++= Seq (
   "org.apache.logging.log4j"   %"log4j-core"                        %"2.11.0",
   "org.apache.logging.log4j"   %"log4j-api"                         %"2.11.0",
   "org.scalatest"                %% "scalatest"            % "3.0.5"	% "test",
-  "org.apache.hadoop" % "hadoop-aws" % "2.7.3"
+  "org.apache.hadoop" % "hadoop-aws" % "2.7.3",
+  "com.microsoft.azure" % "azure-storage-blob" % "10.0.1-Preview",
+  "com.microsoft.azure" % "azure-storage" % "1.2.0"
 )
 assemblyJarName in assembly := s"${name.value}-${version.value}.jar"
 

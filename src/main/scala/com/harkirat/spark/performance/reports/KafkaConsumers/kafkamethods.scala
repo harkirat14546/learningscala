@@ -4,8 +4,9 @@ import com.ericsson.mediafirst.data.providers.kafka.KafkaClusterUtils
 import java.io.{PrintWriter, StringWriter}
 import java.util
 
-import com.ericsson.mediafirst.data.providers.kafka.KafkaClusterUtils.{DEFAULT_GROUP_ID, DEFAULT_LOGGER, DEFAULT_RETRIES_ATTEMPTS, DEFAULT_RETRIES_DELAY, batchFetchOffset, fetchOffsets, fetchOffsetsOnce, getAvailableTopicsOnce, getOffsetManager, getPartitions, getThrowableLoggerFn}
-import com.ericsson.mediafirst.utils.tools.RetryUtils
+import com.ericsson.mediafirst.data.providers.kafka.KafkaClusterUtils.
+{DEFAULT_GROUP_ID, DEFAULT_LOGGER, DEFAULT_RETRIES_ATTEMPTS, DEFAULT_RETRIES_DELAY, fetchOffsets, fetchOffsetsOnce, getAvailableTopicsOnce,
+  getPartitions, getThrowableLoggerFn}
 import com.typesafe.config.{Config, ConfigFactory}
 import org.apache.kafka.clients.consumer.{ConsumerConfig, KafkaConsumer, OffsetAndMetadata, OffsetCommitCallback}
 import org.apache.kafka.common.PartitionInfo
@@ -21,17 +22,20 @@ object kafkamethods extends App {
  val DEFAULT_RETRIES_ATTEMPTS = 10
   val DEFAULT_RETRIES_DELAY = 10
   val DEFAULT_GROUP_ID = "defaultGroupId"
-  val re=getOffsetManager("localhost:9092","goli")
-  re.subscribe(util.Arrays.asList("elasticsearchtopicperfs"))
+  val offsetManager=getOffsetManager("localhost:9092","goli")
+  offsetManager.subscribe(util.Arrays.asList("elasticsearchtopicperfs"))
 
 val ze=getKafkaConsumerParameters("localhost:9092","goli")
   val aval=getAvailableTopicsOnce("localhost:9092","goli")
-val partitions=getPartitions(re,List("elasticsearchtopicperfs"),DEFAULT_LOGGER)
+val partitions=getPartitions(offsetManager,List("elasticsearchtopicperfs"),DEFAULT_LOGGER)
   val partitiononce=getTopicsOffsetRangesOnce("localhost:9092","goli",
     List("elasticsearchtopicperfs"),DEFAULT_LOGGER)
   val config=ConfigFactory.load().getConfig("mediafirst")
-  println(config.getString("input.logs.brokersConnectionString"))
   val gettopicspartitionsOffsetRanges=getTopicsOffsetRanges(config,List("elasticsearchtopicperfs"),DEFAULT_LOGGER)
+  val topicPartitions =partitions.map( partitionInfo => new TopicPartition(partitionInfo.topic(),partitionInfo.partition()))
+println(batchFetchOffset(offsetManager,topicPartitions.toSet))
+ // val batchoff=batchFetchOffset(offsetManager,
+
   println(ze)
   println(aval)
   println(partitions)
@@ -57,6 +61,7 @@ val partitions=getPartitions(re,List("elasticsearchtopicperfs"),DEFAULT_LOGGER)
     f.setAccessible(true)
     val coordinator = f.get(kafkaConsumer).asInstanceOf[ConsumerCoordinator]
     val offsets = coordinator.fetchCommittedOffsets(topicsPartitions,10000)
+    println(s"################$offsets")
     val partitionEarliestOffsets = if (offsets.size() != topicsPartitions.size) {
       (for((k,v)<-kafkaConsumer.beginningOffsets(topicsPartitions)) yield k->v.toLong).toMap
     } else Map[TopicPartition, Long]()

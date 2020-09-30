@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: com.microsoft.azure:azure-annotations:1.2.0:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.microsoft.azure/azure-annotations/jars/azure-annotations-1.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.microsoft.azure/azure-annotations/srcs/azure-annotations-1.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
